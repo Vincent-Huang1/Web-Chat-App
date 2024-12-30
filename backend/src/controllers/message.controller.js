@@ -24,7 +24,7 @@ export const getMessages = async (req, res) => {
             $or:[
                 {senderId: myId, receiverId: userToChatId},
                 {senderId: userToChatId, receiverId: myId}
-            ]
+            ],
         })
 
         res.status(200).json(messages);
@@ -44,7 +44,7 @@ export const sendMessage = async (req, res) => {
         let imageUrl;
 
         if (image){
-            //Uplooad image to cloudinary
+            //Upload image to cloudinary
             const uploadResponse = await cloudinary.uploader.upload(image);
             imageUrl = uploadResponse.secure_url;
         }
